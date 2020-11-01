@@ -5,31 +5,33 @@ As soon as the developer pushes the updated code on the GIT master branch, a new
 code should be containerized and deployed on the test server. The deployment should then be tested using a test automation tool, and if the build is successful, it should be pushed to the prod server. All this should happen automatically and should be triggered from a push to the GitHub master branch.
 
 Use the Master VM for Jenkins, Ansible, Puppet, GIT
-![image](https://user-images.githubusercontent.com/59297711/97794948-b0514700-1bd6-11eb-8062-1470300e095e.png)
+![Screenshot (109)](https://user-images.githubusercontent.com/59297711/97795314-2d7ebb00-1bdb-11eb-9d1b-68c7586fedd7.png)
+
 
 Ubuntu VM image for 
 Jenkins Slave Node 
 
-![image](https://user-images.githubusercontent.com/59297711/97795006-543af280-1bd7-11eb-8b69-3df89f4e21f6.png)
-![image](https://user-images.githubusercontent.com/59297711/97795012-66b52c00-1bd7-11eb-8374-a4a93f559df9.png)
+![Screenshot (102)](https://user-images.githubusercontent.com/59297711/97795343-6fa7fc80-1bdb-11eb-9aaf-5100aeb09ebe.png)
+![Screenshot (103)](https://user-images.githubusercontent.com/59297711/97795350-83ebf980-1bdb-11eb-9537-1e80cd7798fd.png)
 
 Add Build Pipeline Plugin and Post-build task
 plugin to Jenkins on the master VM
 
-![image](https://user-images.githubusercontent.com/59297711/97795019-80ef0a00-1bd7-11eb-813e-db07db560b77.png)
-![image](https://user-images.githubusercontent.com/59297711/97795023-9f550580-1bd7-11eb-96f8-66e0b8ede87b.png)
+![Screenshot (105)](https://user-images.githubusercontent.com/59297711/97795359-a1b95e80-1bdb-11eb-89bf-fd07df5790c6.png)
+
 
 Install python, openssh-server and 
 git on the slave node manually
 
-![image](https://user-images.githubusercontent.com/59297711/97795025-b09e1200-1bd7-11eb-8588-24ae12ba8bcf.png)
+![Screenshot (106)](https://user-images.githubusercontent.com/59297711/97795365-b7c71f00-1bdb-11eb-8f36-742909dae7bc.png)
+
 
 Set up the necessary tools such as 
 git, chromedriver(selenium), chromium browser(selenium)
 on the slave node through Ansible
 
-![image](https://user-images.githubusercontent.com/59297711/97795027-bb58a700-1bd7-11eb-9405-817caae2bef7.png)
-![image](https://user-images.githubusercontent.com/59297711/97795036-d3c8c180-1bd7-11eb-96f5-1231b16494e1.png)
+![Screenshot (81)](https://user-images.githubusercontent.com/59297711/97795380-e93fea80-1bdb-11eb-9216-ea2f4a6df2f3.png)
+![Screenshot (80)](https://user-images.githubusercontent.com/59297711/97795381-e9d88100-1bdb-11eb-8ccc-b850d671c5f6.png)
 
 Use the docker image and add your PHP website
 to it using a Dockerfile and Push the PHP website, 
@@ -43,32 +45,39 @@ It should click on “About” and verify the text
 written in it. This will conclude the website 
 is deployed and is running fine.
 
-![image](https://user-images.githubusercontent.com/59297711/97795102-839e2f00-1bd8-11eb-976f-04056620db54.png)
+![Screenshot (88)](https://user-images.githubusercontent.com/59297711/97795399-2b692c00-1bdc-11eb-9ef2-1ddd3d66a7b6.png)
+![Screenshot (91)](https://user-images.githubusercontent.com/59297711/97795400-2b692c00-1bdc-11eb-9d0e-af95c5933317.png)
+![Screenshot (89)](https://user-images.githubusercontent.com/59297711/97795401-2c01c280-1bdc-11eb-9a1f-722e3fd0ba0f.png)
+
 
 Jenkins Pipeline Tasks:
 Install and configure puppet agent 
 on the slave node (Job 1)
-![image](https://user-images.githubusercontent.com/59297711/97795114-987ac280-1bd8-11eb-9c23-b0aa219e8c05.png)
+
+![Screenshot (110)](https://user-images.githubusercontent.com/59297711/97795435-7a16c600-1bdc-11eb-8ebf-7ea4bd6fbb13.png)
 
 Sign the puppet certificate on 
 master using Jenkins (Job 2)
 
-![image](https://user-images.githubusercontent.com/59297711/97795124-ac262900-1bd8-11eb-89e4-5ab87d1698bf.png)
+![Screenshot (112)](https://user-images.githubusercontent.com/59297711/97795437-7aaf5c80-1bdc-11eb-97fe-6244830f4501.png)
 
 Trigger the puppet agent on test 
 server to install docker (Job 3
 )
-![image](https://user-images.githubusercontent.com/59297711/97795128-c233e980-1bd8-11eb-88d4-682f6b89f37d.png)
+
+![Screenshot (111)](https://user-images.githubusercontent.com/59297711/97795466-e5f92e80-1bdc-11eb-8fda-b2c44211d4b4.png)
+![Screenshot (114)](https://user-images.githubusercontent.com/59297711/97795467-e691c500-1bdc-11eb-9996-f69335f12a4c.png)
 
 Pull the PHP website, Dockerfile and Selenium JAR from your
 git repo and build and deploy your PHP docker container.
 After this test the deployment using Selenium JAR file. (Job 4)
 
-![image](https://user-images.githubusercontent.com/59297711/97795131-ccee7e80-1bd8-11eb-8180-953c51dda2f3.png)
+![Screenshot (115)](https://user-images.githubusercontent.com/59297711/97795480-25c01600-1bdd-11eb-85be-c686f744c1bc.png)
+![Screenshot (117)](https://user-images.githubusercontent.com/59297711/97795481-25c01600-1bdd-11eb-9cae-843f914c43ea.png)
 
 Built image running as container:
 
-![image](https://user-images.githubusercontent.com/59297711/97795139-daa40400-1bd8-11eb-96f3-3496c9c1be57.png)
+![Screenshot (116)](https://user-images.githubusercontent.com/59297711/97795482-2658ac80-1bdd-11eb-895b-7cdbbf66a81b.png)
 ![image](https://user-images.githubusercontent.com/59297711/97795143-e7285c80-1bd8-11eb-9a25-be87b78202fc.png)
 
 
