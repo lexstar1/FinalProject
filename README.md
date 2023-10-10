@@ -1,8 +1,7 @@
 # Capstone Certification Project
-This project is about how to do deploy code to dev/stage/prod etc, just on a click of button.
+The objective of this project is to provide a streamlined process for deploying code across multiple environments, including development, staging, and production. Once a developer has pushed updated code to the GIT master branch, a new test server will be automatically provisioned with all the necessary software. Following this, the code will be containerized and deployed onto the test server. The deployment will be subjected to automated testing using a suitable tool, and if the results meet the predefined criteria, the code will then be deployed to the production server. 
 
-As soon as the developer pushes the updated code on the GIT master branch, a new test server should be provisioned with all the required software. Post this, the
-code should be containerized and deployed on the test server. The deployment should then be tested using a test automation tool, and if the build is successful, it should be pushed to the prod server. All this should happen automatically and should be triggered from a push to the GitHub master branch.
+All of these steps will be executed automatically, with the entire process being initiated by a push to the GitHub master branch. This automation will significantly reduce manual intervention, streamline the entire deployment process, and improve the efficiency of the development cycle.
 
 Use the Master VM for Jenkins, Ansible, Puppet, GIT
 ![Screenshot (109)](https://user-images.githubusercontent.com/59297711/97795314-2d7ebb00-1bdb-11eb-9d1b-68c7586fedd7.png)
